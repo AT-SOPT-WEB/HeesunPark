@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  background-color: skyblue;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+h2 {
+  width: 100%;
+
+  padding-bottom: 0.5rem;
+
+  border-bottom: 1px solid gray;
+}
+
+section p {
+  color: gray;
+}
+
+li {
+  list-style: none;
+
+  text-align: center;
+}
+
+li:first-child {
+  color: pink;
+}
+
+li:nth-child(2) {
+  color: orange;
+}
+
+li:nth-child(3) {
+  color: green;
+}
+
+li:last-child {
+  color: blue;
+
+  text-decoration: underline;
+}
