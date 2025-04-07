@@ -106,11 +106,6 @@ main {
   gap: 1rem;
 }
 
-.section {
-  padding: 2rem;
-  background-color: var(--color-white);
-}
-
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -155,6 +150,39 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.section {
+  padding: 2rem;
+  background-color: var(--color-white);
+}
+
+/* card */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  padding: 2rem;
+}
+
+.card {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 0.5rem;
+
+  border-radius: 5px;
+  background-color: #efefef;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* Footer */
