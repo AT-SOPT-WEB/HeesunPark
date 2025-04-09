@@ -27,7 +27,6 @@
 
 body {
   padding-top: 3rem;
-
   background-color: var(--color-background);
   color: var(--color-text);
 }
@@ -60,6 +59,7 @@ body {
   font-size: var(--font-large);
 }
 
+/* Container */
 .container {
   display: flex;
   width: 100%;
@@ -101,8 +101,9 @@ body {
 .nav__title {
   font-size: var(--font-large);
 }
+
 .nav__item {
-  padding: 1rem 0rem;
+  padding: 1rem 0;
 }
 
 .nav__item:first-child {
@@ -132,7 +133,7 @@ main {
   gap: 1rem;
 }
 
-.grid-container {
+.grid__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -242,7 +243,6 @@ main {
 }
 
 /* Infinite Banner */
-
 .banner {
   overflow: hidden;
 }
@@ -268,8 +268,7 @@ main {
   object-fit: cover;
 }
 
-/* scroll animation */
-/* 0%에서 -100%로 이동 */
+/* 좌 → 우 무한 스크롤 애니메이션 */
 @keyframes scroll {
   0% {
     transform: translateX(0);
