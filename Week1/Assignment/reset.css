@@ -143,3 +143,10 @@ a:active {
   color: inherit;
   background-color: inherit;
 }
+
+button {
+  border: none;
+  outline: none;
+  background-color: inherit;
+  cursor: pointer;
+}
