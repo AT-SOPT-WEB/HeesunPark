@@ -16,7 +16,7 @@
         <h1 class="header__title">☘️ 희선이의 투두리스트 ☘️</h1>
         <div class="header__btn--container">
           <button type="button" class="btn filter__btn--all">전체</button>
-          <button type="button" class="btn filter__btn--completed">
+          <button type="button" class="btn filter__btn--complete">
             완료됨
           </button>
           <button type="button" class="btn filter__btn--incomplete">
@@ -31,9 +31,9 @@
             class="select filter__select"
           >
             <option value="" hidden>중요도</option>
-            <option value="1" class="select--option">1</option>
-            <option value="2" class="select--option">2</option>
-            <option value="3" class="select--option">3</option>
+            <option value="1" class="filter__select--option">1</option>
+            <option value="2" class="filter__select--option">2</option>
+            <option value="3" class="filter__select--option">3</option>
           </select>
         </div>
       </div>
@@ -60,11 +60,17 @@
             class="select todo-form__select"
           >
             <option value="" hidden>중요도 선택</option>
-            <option value="1" class="select--option">1</option>
-            <option value="2" class="select--option">2</option>
-            <option value="3" class="select--option">3</option>
+            <option name="priority" value="1" class="todo-form__select--option">
+              1
+            </option>
+            <option name="priority" value="2" class="todo-form__select--option">
+              2
+            </option>
+            <option name="priority" value="3" class="todo-form__select--option">
+              3
+            </option>
           </select>
-          <button type="submit" class="btn todo-form__btn-add">추가</button>
+          <button type="button" class="btn todo-form__btn-add">추가</button>
         </form>
       </section>
 

@@ -37,7 +37,6 @@ body {
 
   width: 70rem;
   padding: 2rem;
-  margin-top: 2rem;
 
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
@@ -68,7 +67,7 @@ body {
   background-color: var(--color-secondary);
 }
 
-.select--option {
+option {
   background-color: var(--color-white);
   color: var(--color-text);
   text-align: center;

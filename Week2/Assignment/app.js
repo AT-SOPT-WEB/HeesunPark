@@ -1,44 +1,75 @@
 import { todos } from './data/data.js';
+import { createTableRow, renderList } from './utils/dom.js';
+import { getTodos, setTodos } from './utils/storage.js';
+import { filterTodos } from './utils/filter.js';
 
 const storageKey = 'todos';
-let storedData = localStorage.getItem(storageKey);
-let todoList;
+let todoList = getTodos(storageKey, todos);
 
-if (storedData) {
-  todoList = JSON.parse(storedData);
-} else {
-  todoList = todos;
-  localStorage.setItem(storageKey, JSON.stringify(todoList));
-}
+// 초기 렌더링
+renderList(todoList);
 
-const tbody = document.querySelector('.todo-table__body');
+const btnAll = document.querySelector('.filter__btn--all');
+const btnComplete = document.querySelector('.filter__btn--complete');
+const btnIncomplete = document.querySelector('.filter__btn--incomplete');
+const selectPriority = document.getElementById('filter-priority');
 
-todoList.forEach((todo) => {
-  const tr = document.createElement('tr');
+let currentStatus = 'all';
+let currentPriority = '';
 
-  const tdCheckbox = document.createElement('td');
-  const checkbox = document.createElement('input');
+const applyFilters = () => {
+  const filtered = filterTodos(todoList, currentStatus, currentPriority);
+  renderList(filtered);
+};
 
-  checkbox.type = 'checkbox';
-  tdCheckbox.className = 'todo-table__checkbox';
-  tdCheckbox.appendChild(checkbox);
+const handleStatusClick = (event) => {
+  const clicked = event.target;
 
-  const tdPriority = document.createElement('td');
-  tdPriority.className = 'todo-table__priority';
-  tdPriority.textContent = todo.priority;
+  if (clicked === btnComplete) currentStatus = 'complete';
+  else if (clicked === btnIncomplete) currentStatus = 'incomplete';
+  else currentStatus = 'all';
 
-  const tdCompleted = document.createElement('td');
-  tdCompleted.className = 'todo-table__completed';
-  tdCompleted.textContent = todo.completed ? 'O' : 'X';
+  applyFilters();
+};
 
-  const tdTitle = document.createElement('td');
-  tdTitle.className = 'todo-table__title';
-  tdTitle.textContent = todo.title;
+const handlePriorityChange = () => {
+  currentPriority = Number(selectPriority.value);
 
-  tr.appendChild(tdCheckbox);
-  tr.appendChild(tdPriority);
-  tr.appendChild(tdCompleted);
-  tr.appendChild(tdTitle);
+  applyFilters();
+};
 
-  tbody.appendChild(tr);
-});
+btnAll.addEventListener('click', handleStatusClick);
+btnComplete.addEventListener('click', handleStatusClick);
+btnIncomplete.addEventListener('click', handleStatusClick);
+selectPriority.addEventListener('change', handlePriorityChange);
+
+const handleAddBtnClick = () => {
+  const input = document.querySelector('.todo-form__input');
+  const selectPriority = document.getElementById('todo-priority');
+
+  const title = input.value;
+  const priority = selectPriority.value;
+
+  if (!title || !priority) {
+    alert('모든 항목이 채워지지 않았습니다');
+    return;
+  }
+
+  const newTodo = {
+    id: todoList.length + 1,
+    title,
+    completed: false,
+    priority,
+  };
+
+  todoList.push(newTodo);
+  setTodos(storageKey, todoList);
+
+  renderList(todoList);
+
+  input.value = '';
+  selectPriority.value = '';
+};
+
+const btnAdd = document.querySelector('.todo-form__btn-add');
+btnAdd.addEventListener('click', handleAddBtnClick);
