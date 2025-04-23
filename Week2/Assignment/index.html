@@ -4,44 +4,65 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>희선이의 투두리스트</title>
+    <link href="./styles/global.css" rel="stylesheet" />
+    <link href="./styles/reset.css" rel="stylesheet" />
+    <link href="./styles/style.css" rel="stylesheet" />
   </head>
   <body>
     <!-- header -->
-    <header class="header">
+
+    <header>
       <div class="header__container">
-        <button type="button" class="btn filter__btn--all">전체</button>
-        <button type="button" class="btn filter__btn--completed">완료됨</button>
-        <button type="button" class="btn filter__btn--incomplete">
-          미완료
-        </button>
-        <label for="filter-priority" class="filter__label"></label>
-        <select id="filter-priority" name="priority" class="btn filter__select">
-          <option value="">중요도 ▼</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
+        <h1 class="header__title">☘️ 희선이의 투두리스트 ☘️</h1>
+        <div class="header__btn--container">
+          <button type="button" class="btn filter__btn--all">전체</button>
+          <button type="button" class="btn filter__btn--completed">
+            완료됨
+          </button>
+          <button type="button" class="btn filter__btn--incomplete">
+            미완료
+          </button>
+          <label for="filter-priority" class="filter__label visually-hidden"
+            >중요도</label
+          >
+          <select
+            id="filter-priority"
+            name="priority"
+            class="select filter__select"
+          >
+            <option value="" hidden>중요도</option>
+            <option value="1" class="select--option">1</option>
+            <option value="2" class="select--option">2</option>
+            <option value="3" class="select--option">3</option>
+          </select>
+        </div>
       </div>
     </header>
 
     <!-- main -->
-    <main>
+    <main class="todo__container">
       <!-- top section -->
       <section class="todo-form__container">
         <form class="todo-form">
-          <label for="todo-input" class="todo-form__label"></label>
+          <label for="todo-input" class="todo-form__label visually-hidden"
+            >내용</label
+          >
           <input
             type="text"
             id="todo-input"
             class="todo-form__input"
             placeholder="할 일을 입력하세요"
           />
-          <label for=todo-priority" class="todo-form__label"></label>
-          <select id="todo-priority" name="priority" class="todo-form__select">
-            <option value="">중요도 선택</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+          <label for="todo-priority" class="todo-form__label"></label>
+          <select
+            id="todo-priority"
+            name="priority"
+            class="select todo-form__select"
+          >
+            <option value="" hidden>중요도 선택</option>
+            <option value="1" class="select--option">1</option>
+            <option value="2" class="select--option">2</option>
+            <option value="3" class="select--option">3</option>
           </select>
           <button type="submit" class="btn todo-form__btn-add">추가</button>
         </form>
@@ -57,10 +78,7 @@
           <thead class="todo-table__head">
             <tr>
               <th>
-                <input
-                  type="checkbox"
-                  class="todo-table__checkbox"
-                />
+                <input type="checkbox" class="todo-table__checkbox" />
               </th>
               <th>중요도</th>
               <th>완료됨</th>
@@ -68,19 +86,18 @@
             </tr>
           </thead>
 
-          <tbody class="todo-table__body">
-          </tbody>
+          <tbody class="todo-table__body"></tbody>
         </table>
       </section>
     </main>
 
     <!-- Footer -->
-      <footer>
-          <p>AT SOPT Web Part Week 2 Assignment</p>
-          <a href="https://www.instagram.com/pkkheesun/">@pkkheesun</a>
-      </footer>
+    <footer>
+      <p>AT SOPT Web Part Week 2 Assignment</p>
+      <a href="https://www.instagram.com/pkkheesun/">@pkkheesun</a>
+    </footer>
 
-      <script src="./app.js" type="module"></script>
-      <script src="./data/data.js" type="module"></script>
+    <script src="./app.js" type="module"></script>
+    <script src="./data/data.js" type="module"></script>
   </body>
 </html>

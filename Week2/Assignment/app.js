@@ -20,19 +20,19 @@ todoList.forEach((todo) => {
   const checkbox = document.createElement('input');
 
   checkbox.type = 'checkbox';
-  tdCheckbox.className = 'td todo-tdCheckbox';
+  tdCheckbox.className = 'todo-table__checkbox';
   tdCheckbox.appendChild(checkbox);
 
   const tdPriority = document.createElement('td');
-  tdPriority.className = 'td todo-tdPriority';
+  tdPriority.className = 'todo-table__priority';
   tdPriority.textContent = todo.priority;
 
   const tdCompleted = document.createElement('td');
-  tdCompleted.className = 'td todo-tdCompleted';
+  tdCompleted.className = 'todo-table__completed';
   tdCompleted.textContent = todo.completed ? 'O' : 'X';
 
   const tdTitle = document.createElement('td');
-  tdTitle.className = 'td todo-tdTitle';
+  tdTitle.className = 'todo-table__title';
   tdTitle.textContent = todo.title;
 
   tr.appendChild(tdCheckbox);

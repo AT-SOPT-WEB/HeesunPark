@@ -1,0 +1,153 @@
+@font-face {
+  font-family: 'ChosunGu';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'ChosunGu';
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.header__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  width: 70rem;
+  padding: 2rem;
+  margin-top: 2rem;
+
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header__title {
+  font-size: var(--font-xlarge);
+}
+
+.header__btn--container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+.btn,
+.select {
+  padding: 0.8rem 1.2rem;
+
+  border-radius: 5px;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+
+  font-size: var(--font-small);
+}
+
+.btn:hover {
+  background-color: var(--color-secondary);
+}
+
+.select--option {
+  background-color: var(--color-white);
+  color: var(--color-text);
+  text-align: center;
+  font-size: var(--font-small);
+}
+
+.todo__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  padding: 2rem;
+
+  width: 70rem;
+
+  background-color: var(--color-gray);
+}
+
+.todo-form {
+  display: flex;
+
+  gap: 0.5rem;
+}
+
+.todo-form__input {
+  flex: 1;
+
+  padding: 0 1rem;
+
+  border: none;
+  border-radius: 5px;
+}
+
+.todo-form__select,
+.todo-form__btn-add {
+  flex-shrink: 0;
+}
+
+.todo-table__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  align-items: end;
+}
+
+.todo-table {
+  width: 100%;
+
+  border-collapse: separate;
+  border-spacing: 0.2rem;
+}
+
+.todo-table__head {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.todo-table__head th {
+  padding: 1rem;
+
+  font-size: var(--font-small);
+}
+
+.todo-table__body td {
+  padding: 1rem;
+
+  background-color: var(--color-white);
+  text-align: center;
+  font-size: var(--font-xsmall);
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+
+  padding: 1rem;
+  width: 100%;
+  height: 4rem;
+
+  background-color: var(--color-gray);
+}
