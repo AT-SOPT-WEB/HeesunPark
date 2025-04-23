@@ -1,12 +1,11 @@
 import { todos } from './data/data.js';
-import { createTableRow, renderList } from './utils/dom.js';
+import { renderList } from './utils/dom.js';
 import { getTodos, setTodos } from './utils/storage.js';
 import { filterTodos } from './utils/filter.js';
 import { addRow } from './utils/row-actions.js';
 
 const storageKey = 'todos';
 let todoList = getTodos(storageKey, todos);
-let id = todoList.length + 1;
 
 renderList(todoList);
 
@@ -44,7 +43,12 @@ btnComplete.addEventListener('click', handleStatusClick);
 btnIncomplete.addEventListener('click', handleStatusClick);
 selectPriority.addEventListener('change', handlePriorityChange);
 
+const getNextId = () => {
+  return todoList.length ? Math.max(...todoList.map((todo) => todo.id)) + 1 : 1;
+};
+
 const handleRowClick = () => {
+  const id = getNextId();
   const newList = addRow(id);
 
   todoList.push(newList);
@@ -55,3 +59,26 @@ const handleRowClick = () => {
 
 const btnAdd = document.querySelector('.todo-form__btn-add');
 btnAdd.addEventListener('click', handleRowClick);
+
+const getCheckedTd = () => {
+  const checkboxes = document.querySelectorAll(
+    '.todo-table__body input[type="checkbox"]:checked'
+  );
+  const ids = Array.from(checkboxes).map((checkbox) =>
+    Number(checkbox.dataset.id)
+  );
+
+  return ids;
+};
+
+const deleteRow = () => {
+  const ids = getCheckedTd();
+
+  todoList = todoList.filter((todo) => !ids.includes(todo.id));
+
+  setTodos(storageKey, todoList);
+  renderList(todoList);
+};
+
+const btnDelete = document.querySelector('.btn__actions--delete');
+btnDelete.addEventListener('click', deleteRow);

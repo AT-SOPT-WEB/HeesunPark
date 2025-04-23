@@ -4,6 +4,7 @@ export const createTableRow = (todo) => {
   const tdCheckbox = document.createElement('td');
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
+  checkbox.dataset.id = todo.id;
   tdCheckbox.className = 'todo-table__checkbox';
   tdCheckbox.appendChild(checkbox);
 
