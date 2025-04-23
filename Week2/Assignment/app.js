@@ -2,11 +2,12 @@ import { todos } from './data/data.js';
 import { createTableRow, renderList } from './utils/dom.js';
 import { getTodos, setTodos } from './utils/storage.js';
 import { filterTodos } from './utils/filter.js';
+import { addRow } from './utils/row-actions.js';
 
 const storageKey = 'todos';
 let todoList = getTodos(storageKey, todos);
+let id = todoList.length + 1;
 
-// 초기 렌더링
 renderList(todoList);
 
 const btnAll = document.querySelector('.filter__btn--all');
@@ -43,33 +44,14 @@ btnComplete.addEventListener('click', handleStatusClick);
 btnIncomplete.addEventListener('click', handleStatusClick);
 selectPriority.addEventListener('change', handlePriorityChange);
 
-const handleAddBtnClick = () => {
-  const input = document.querySelector('.todo-form__input');
-  const selectPriority = document.getElementById('todo-priority');
+const handleRowClick = () => {
+  const newList = addRow(id);
 
-  const title = input.value;
-  const priority = selectPriority.value;
-
-  if (!title || !priority) {
-    alert('모든 항목이 채워지지 않았습니다');
-    return;
-  }
-
-  const newTodo = {
-    id: todoList.length + 1,
-    title,
-    completed: false,
-    priority,
-  };
-
-  todoList.push(newTodo);
+  todoList.push(newList);
   setTodos(storageKey, todoList);
 
   renderList(todoList);
-
-  input.value = '';
-  selectPriority.value = '';
 };
 
 const btnAdd = document.querySelector('.todo-form__btn-add');
-btnAdd.addEventListener('click', handleAddBtnClick);
+btnAdd.addEventListener('click', handleRowClick);
