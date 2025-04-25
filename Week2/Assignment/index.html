@@ -22,9 +22,7 @@
           <button type="button" class="btn filter__btn--incomplete">
             미완료
           </button>
-          <label for="filter-priority" class="filter__label visually-hidden"
-            >중요도</label
-          >
+
           <select
             id="filter-priority"
             name="priority"
@@ -44,32 +42,20 @@
       <!-- top section -->
       <section class="todo-form__container">
         <form class="todo-form">
-          <label for="todo-input" class="todo-form__label visually-hidden"
-            >내용</label
-          >
           <input
             type="text"
             id="todo-input"
             class="todo-form__input"
             placeholder="할 일을 입력하세요"
           />
-          <label for="todo-priority" class="todo-form__label"></label>
-          <select
-            id="todo-priority"
-            name="priority"
-            class="select todo-form__select"
-          >
-            <option value="" hidden>중요도 선택</option>
-            <option name="priority" value="1" class="todo-form__select--option">
-              1
-            </option>
-            <option name="priority" value="2" class="todo-form__select--option">
-              2
-            </option>
-            <option name="priority" value="3" class="todo-form__select--option">
-              3
-            </option>
-          </select>
+          <div class="custom-select" data-selected="">
+            <div class="custom-select__trigger">중요도 선택</div>
+            <div class="custom-options">
+              <span class="custom-option" data-value="1">1</span>
+              <span class="custom-option" data-value="2">2</span>
+              <span class="custom-option" data-value="3">3</span>
+            </div>
+          </div>
           <button type="button" class="btn todo-form__btn-add">추가</button>
         </form>
       </section>

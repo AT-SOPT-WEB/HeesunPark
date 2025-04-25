@@ -1,5 +1,6 @@
 export const createTableRow = (todo) => {
   const tr = document.createElement('tr');
+  tr.draggable = true;
 
   const tdCheckbox = document.createElement('td');
   const checkbox = document.createElement('input');
@@ -30,10 +31,20 @@ export const createTableRow = (todo) => {
 
 export const renderList = (list) => {
   const tbody = document.querySelector('.todo-table__body');
-
   tbody.innerHTML = '';
+
   list.forEach((todo) => {
     const row = createTableRow(todo);
     tbody.appendChild(row);
   });
+};
+
+export const getRowCheckboxes = () => {
+  return document.querySelectorAll('.todo-table__body input[type="checkbox"]');
+};
+
+export const getCheckedIds = () => {
+  return Array.from(getRowCheckboxes())
+    .filter((cb) => cb.checked)
+    .map((cb) => Number(cb.dataset.id));
 };
