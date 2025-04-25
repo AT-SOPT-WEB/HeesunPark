@@ -17,7 +17,7 @@ export const initCustomSelect = () => {
         select.setAttribute('data-selected', value);
         select.classList.remove('open');
 
-        // 필터용 셀렉트인 경우 이벤트 발생
+        // 필터 section select인 경우
         if (select.closest('.header__btn--container')) {
           const event = new CustomEvent('filterChange', { detail: { value } });
           select.dispatchEvent(event);

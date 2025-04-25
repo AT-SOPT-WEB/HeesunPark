@@ -13,21 +13,7 @@ import { getRowCheckboxes, getCheckedIds } from './utils/dom.js';
 import { initCustomSelect } from './utils/selectDropdown.js';
 import { addRow } from './utils/row-actions.js';
 import { initDragAndDrop } from './utils/drag.js';
-
-document.addEventListener('DOMContentLoaded', () => {
-  initCustomSelect();
-
-  // 필터 셀렉트 이벤트 핸들러
-  const filterSelect = document.querySelector(
-    '.header__btn--container .custom-select'
-  );
-  if (filterSelect) {
-    filterSelect.addEventListener('filterChange', (e) => {
-      currentPriority = e.detail.value ? Number(e.detail.value) : '';
-      applyFilters();
-    });
-  }
-});
+import { showModal } from './utils/modal.js';
 
 const storageKey = 'todos';
 let todoList = getTodos(storageKey, todos);
@@ -39,13 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const filterSelect = document.querySelector('.custom-select--filter');
   if (filterSelect) {
-    filterSelect.addEventListener('customFilterChange', (e) => {
+    filterSelect.addEventListener('filterChange', (e) => {
       currentPriority = e.detail.value || '';
       applyFilters();
     });
   }
 
-  // 드래그 앤 드롭 초기화
   initDragAndDrop(todoList, renderList, setTodos, storageKey);
 });
 
@@ -69,6 +54,7 @@ btnAll.addEventListener('click', () => {
   currentStatus = 'all';
   applyFilters();
 });
+
 btnComplete.addEventListener('click', () => {
   currentStatus = 'complete';
   applyFilters();
@@ -97,12 +83,12 @@ btnDelete.addEventListener('click', () => {
 btnFinish.addEventListener('click', () => {
   const ids = getCheckedIds();
   if (ids.length === 0) {
-    alert('완료 처리할 항목을 선택하세요.');
+    showModal('완료 처리할 항목을 선택하세요.');
     return;
   }
   const result = finishTodos(todoList, ids);
   if (!result) {
-    alert('이미 완료된 항목이 있습니다.');
+    showModal('이미 완료된 항목이 있습니다.');
 
     // 체크박스 해제
     setAllRowCheckboxes(getRowCheckboxes(), false);

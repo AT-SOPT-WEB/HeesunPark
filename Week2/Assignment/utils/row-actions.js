@@ -1,3 +1,5 @@
+import { showModal } from './modal.js';
+
 export const addRow = (id) => {
   const input = document.querySelector('.todo-form__input');
   const customSelect = document.querySelector('.todo-form .custom-select');
@@ -6,7 +8,7 @@ export const addRow = (id) => {
   const priority = Number(customSelect.getAttribute('data-selected'));
 
   if (!title || !priority) {
-    alert('모든 항목이 채워지지 않았습니다');
+    showModal('모든 항목이 입력되지 않았습니다');
     return;
   }
 

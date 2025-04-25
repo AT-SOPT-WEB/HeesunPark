@@ -18,3 +18,10 @@ export const filterTodos = (todos, status, priority) => {
   const filteredByStatus = filterByStatus(todos, status);
   return filterByPriority(filteredByStatus, priority);
 };
+
+export const resetFilters = () => {
+  return {
+    status: 'all',
+    priority: '',
+  };
+};
