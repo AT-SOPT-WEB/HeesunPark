@@ -1,6 +1,7 @@
 export const createTableRow = (todo) => {
   const tr = document.createElement('tr');
   tr.draggable = true;
+  tr.dataset.id = todo.id;
 
   const tdCheckbox = document.createElement('td');
   const checkbox = document.createElement('input');

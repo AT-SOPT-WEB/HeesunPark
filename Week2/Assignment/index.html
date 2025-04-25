@@ -23,16 +23,16 @@
             미완료
           </button>
 
-          <select
-            id="filter-priority"
-            name="priority"
-            class="select filter__select"
-          >
-            <option value="" hidden>중요도</option>
-            <option value="1" class="filter__select--option">1</option>
-            <option value="2" class="filter__select--option">2</option>
-            <option value="3" class="filter__select--option">3</option>
-          </select>
+          <div class="custom-select custom-select--filter" data-selected="">
+            <div class="custom-select__trigger custom-select__trigger--filter">
+              중요도
+            </div>
+            <div class="custom-select__options custom-select__options--filter">
+              <span class="custom-select__option" data-value="1">1</span>
+              <span class="custom-select__option" data-value="2">2</span>
+              <span class="custom-select__option" data-value="3">3</span>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -48,12 +48,12 @@
             class="todo-form__input"
             placeholder="할 일을 입력하세요"
           />
-          <div class="custom-select" data-selected="">
+          <div class="custom-select">
             <div class="custom-select__trigger">중요도 선택</div>
-            <div class="custom-options">
-              <span class="custom-option" data-value="1">1</span>
-              <span class="custom-option" data-value="2">2</span>
-              <span class="custom-option" data-value="3">3</span>
+            <div class="custom-select__options">
+              <span class="custom-select__option" data-value="1">1</span>
+              <span class="custom-select__option" data-value="2">2</span>
+              <span class="custom-select__option" data-value="3">3</span>
             </div>
           </div>
           <button type="button" class="btn todo-form__btn-add">추가</button>

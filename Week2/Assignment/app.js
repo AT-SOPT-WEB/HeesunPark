@@ -12,9 +12,21 @@ import { syncHeaderCheckbox, setAllRowCheckboxes } from './utils/checkbox.js';
 import { getRowCheckboxes, getCheckedIds } from './utils/dom.js';
 import { initCustomSelect } from './utils/selectDropdown.js';
 import { addRow } from './utils/row-actions.js';
+import { initDragAndDrop } from './utils/drag.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initCustomSelect();
+
+  // 필터 셀렉트 이벤트 핸들러
+  const filterSelect = document.querySelector(
+    '.header__btn--container .custom-select'
+  );
+  if (filterSelect) {
+    filterSelect.addEventListener('filterChange', (e) => {
+      currentPriority = e.detail.value ? Number(e.detail.value) : '';
+      applyFilters();
+    });
+  }
 });
 
 const storageKey = 'todos';
@@ -22,13 +34,27 @@ let todoList = getTodos(storageKey, todos);
 
 renderList(todoList);
 
+document.addEventListener('DOMContentLoaded', () => {
+  initCustomSelect();
+
+  const filterSelect = document.querySelector('.custom-select--filter');
+  if (filterSelect) {
+    filterSelect.addEventListener('customFilterChange', (e) => {
+      currentPriority = e.detail.value || '';
+      applyFilters();
+    });
+  }
+
+  // 드래그 앤 드롭 초기화
+  initDragAndDrop(todoList, renderList, setTodos, storageKey);
+});
+
 let currentStatus = 'all';
 let currentPriority = '';
 
 const btnAll = document.querySelector('.filter__btn--all');
 const btnComplete = document.querySelector('.filter__btn--complete');
 const btnIncomplete = document.querySelector('.filter__btn--incomplete');
-const selectPriority = document.getElementById('filter-priority');
 const btnAdd = document.querySelector('.todo-form__btn-add');
 const btnDelete = document.querySelector('.btn__actions--delete');
 const btnFinish = document.querySelector('.btn__actions--finish');
@@ -49,10 +75,6 @@ btnComplete.addEventListener('click', () => {
 });
 btnIncomplete.addEventListener('click', () => {
   currentStatus = 'incomplete';
-  applyFilters();
-});
-selectPriority.addEventListener('change', () => {
-  currentPriority = Number(selectPriority.value);
   applyFilters();
 });
 
