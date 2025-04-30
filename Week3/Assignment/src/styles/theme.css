@@ -1,6 +1,6 @@
 @theme {
-  --color-primary: #145efc;
-  --color-secondary: #1415fc;
+  --color-primary: #0088ff;
+  --color-secondary: #002fff;
 
   --color-white: #fff;
   --color-black: #000;
@@ -9,8 +9,6 @@
 
   --text-title-1: 1.5rem; /* 24px */
   --text-title-2: 1rem; /* 24px */
-  --text-body: 1rem; /* 16px */
+  --text-body: 0.7rem; /* 16px */
   --text-caption: 0.875rem; /* 14px */
-
-  --radius-lg: 5px;
 }
