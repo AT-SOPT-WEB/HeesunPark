@@ -33,6 +33,10 @@ const GitHubUserSearch = () => {
     setShowCard(false);
   };
 
+  const handleDeleteStore = () => {
+    setUserList(userList.slice(0, userList.length - 1));
+    setItem(GITHUB_KEY, userList);
+  };
   return (
     <div className="flex flex-col gap-4">
       <Input
@@ -46,9 +50,16 @@ const GitHubUserSearch = () => {
         {userList.map((user, i) => (
           <List
             key={`${user}-${i}`}
-            className="cursor-pointer hover:text-blue-500"
+            className="flex cursor-pointer items-center gap-1 hover:text-blue-500"
           >
             {user}
+            <button
+              type="button"
+              onClick={handleDeleteStore}
+              className="flex cursor-pointer items-center"
+            >
+              <i className="fa-solid fa-xmark"></i>
+            </button>
           </List>
         ))}
       </ul>
