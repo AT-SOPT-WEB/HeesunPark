@@ -7,7 +7,7 @@ import {
 } from "../utils/baseballUtils";
 import { setItem, getItem } from "../utils/storageUtils";
 import { BASEBALL_KEY } from "../constant/storageKey";
-import { MAX_ATTEMPTS } from "../constant/maxAttempt";
+import { MAX_ATTEMPTS } from "../constant/maxValue";
 export const useBaseballGame = () => {
   const [answer, setAnswer] = useState("");
   const [guesses, setGuesses] = useState([]);

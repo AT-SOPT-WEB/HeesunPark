@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { GITHUB_KEY } from "../constant/storageKey";
 import { getItem, setItem } from "../utils/storageUtils";
 import List from "./List";
+import { MAX_STORE } from "../constant/maxValue";
 const GitHubUserSearch = () => {
   const [userInput, setUserInput] = useState("");
   const { userInfo, getUserInfo } = useGitHubUser();
@@ -20,7 +21,8 @@ const GitHubUserSearch = () => {
       getUserInfo(userInput);
       setUserList((prev) => {
         const isExist = prev.some((user) => user === userInput);
-        return isExist ? prev : [...prev, userInput];
+        const newList = isExist ? prev : [userInput, ...prev];
+        return newList.slice(0, MAX_STORE);
       });
       setShowCard(true);
       setUserInput("");
