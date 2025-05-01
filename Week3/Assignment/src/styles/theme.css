@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Ownglyph_corncorn-Rg";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2412-1@1.0/Ownglyph_corncorn-Rg.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @theme {
   --color-primary: #0088ff;
   --color-secondary: #002fff;
@@ -5,10 +13,10 @@
   --color-white: #fff;
   --color-black: #000;
 
-  --font-pretendard: "Pretendard", "sans-serif";
+  --font-corn: "Ownglyph_corncorn-Rg", "sans-serif";
 
-  --text-title-1: 1.5rem; /* 24px */
-  --text-title-2: 1rem; /* 24px */
-  --text-body: 0.7rem; /* 16px */
-  --text-caption: 0.875rem; /* 14px */
+  --text-title-1: 1.8rem;
+  --text-title-2: 1rem;
+  --text-body: 0.7rem;
+  --text-caption: 0.875rem;
 }
