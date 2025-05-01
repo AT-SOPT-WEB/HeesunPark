@@ -4,7 +4,10 @@ export const renderUserInfo = (userInfo, showCard, handleCloseCard) => {
   if (userInfo.status === "pending") {
     return (
       <div className="mt-8 flex items-center justify-center">
-        <ClipLoader color="#2563eb" size={48} />
+        <div
+          className="mx-auto h-12 w-12 animate-spin rounded-full border-2 border-secondary border-t-transparent"
+          aria-label="로딩 중"
+        />
       </div>
     );
   }
