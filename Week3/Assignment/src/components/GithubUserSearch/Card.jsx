@@ -38,7 +38,7 @@ const Card = ({ onClose, ...data }) => {
           <p>Followers</p>
           <p className="text-body">{data.followers}</p>
         </div>
-        <div className="follows">
+        <div className="follows colorDuration">
           <p>Following</p>
           <p className="text-body">{data.following}</p>
         </div>
