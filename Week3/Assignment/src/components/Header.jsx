@@ -1,22 +1,22 @@
-import Button from "./Button";
+import TabButton from "./TabButton";
 
 const Header = ({ selected, onTabChange }) => {
   return (
     <div className="flex h-32 flex-col items-center justify-center gap-2 bg-primary">
       <h1 className="text-title-1 text-white">⚾ 숫자야구 & 깃허브 검색 🔍</h1>
       <div className="flex gap-2">
-        <Button
+        <TabButton
           selected={selected === "github"}
           onClick={() => onTabChange("github")}
         >
           깃허브 검색 🔍
-        </Button>
-        <Button
+        </TabButton>
+        <TabButton
           selected={selected === "baseball"}
           onClick={() => onTabChange("baseball")}
         >
           숫자야구 ⚾
-        </Button>
+        </TabButton>
       </div>
     </div>
   );

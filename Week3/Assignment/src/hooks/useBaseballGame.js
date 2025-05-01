@@ -5,7 +5,7 @@ import {
   isThreeDigit,
   hasDuplicate,
 } from "../utils/baseballUtils";
-import { setItem, getItem, clearStorage } from "../utils/storageUtils";
+import { setItem, getItem } from "../utils/storageUtils";
 import { BASEBALL_KEY } from "../constant/storageKey";
 import { MAX_ATTEMPTS } from "../constant/maxAttempt";
 export const useBaseballGame = () => {
@@ -21,13 +21,14 @@ export const useBaseballGame = () => {
       setAnswer(savedData.answer);
       setGuesses(savedData.guesses);
       setAttempt(savedData.attempt);
+      setMessage(savedData.message || "");
     } else {
       const newAnswer = makeAnswer();
       setAnswer(newAnswer);
       setItem(BASEBALL_KEY, {
         answer: newAnswer,
         guesses: [],
-        attempt: attempt,
+        attempt: 0,
       });
     }
   }, []);
@@ -35,9 +36,9 @@ export const useBaseballGame = () => {
   // 상태 변화 시 저장
   useEffect(() => {
     if (answer) {
-      setItem(BASEBALL_KEY, { answer, guesses, attempt });
+      setItem(BASEBALL_KEY, { answer, guesses, attempt, message });
     }
-  }, [guesses, answer, attempt]);
+  }, [guesses, answer, attempt, message]);
 
   const resetGame = () => {
     const newAnswer = makeAnswer();
@@ -45,7 +46,12 @@ export const useBaseballGame = () => {
     setMessage("");
     setAttempt(0);
     setAnswer(newAnswer);
-    setItem(BASEBALL_KEY, { answer: newAnswer, attempt, guesses: [] });
+    setItem(BASEBALL_KEY, {
+      answer: newAnswer,
+      attempt: 0,
+      guesses: [],
+      message: "",
+    });
   };
 
   const onGuess = (userInput) => {

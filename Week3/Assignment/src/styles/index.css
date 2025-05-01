@@ -9,6 +9,6 @@
 
 @layer components {
   .message {
-    @apply text-title-2 font-bold text-secondary;
+    @apply text-title-2 text-secondary font-bold;
   }
 }

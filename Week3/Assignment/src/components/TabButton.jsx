@@ -1,4 +1,4 @@
-const Button = ({ children, selected, onClick }) => {
+const TabButton = ({ children, selected, onClick }) => {
   return (
     <button
       type="button"
@@ -10,4 +10,4 @@ const Button = ({ children, selected, onClick }) => {
   );
 };
 
-export default Button;
+export default TabButton;
