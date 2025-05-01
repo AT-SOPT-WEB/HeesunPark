@@ -1,9 +1,16 @@
-const Card = ({ ...data }) => {
+const Card = ({ onClose, ...data }) => {
   return (
-    <div className="flex size-100 flex-col items-center gap-4 rounded-lg bg-blue-900 p-6 text-white">
-      <button type="button" className="flex w-full justify-end text-white">
-        <i className="fa-solid fa-xmark rounded-full bg-secondary px-1.5 py-1"></i>
-      </button>
+    <div className="flex size-100 flex-col items-center gap-4 rounded-lg bg-blue-800 p-6 text-white">
+      <div className="flex w-full justify-end">
+        <button
+          aria-label="닫기 버튼"
+          onClick={onClose}
+          type="button"
+          className="cursor-pointer"
+        >
+          <i className="fa-solid fa-xmark rounded-full bg-primary px-1.5 py-1 hover:bg-secondary"></i>
+        </button>
+      </div>
 
       <img
         src={data.avatar_url}
@@ -13,11 +20,11 @@ const Card = ({ ...data }) => {
       <p>{data.name}</p>
       <p className="text-body">{data.bio}</p>
       <div className="flex w-full gap-4">
-        <div className="flex w-full flex-col items-center rounded-lg bg-secondary p-2">
+        <div className="follows colorDuration">
           <p>Followers</p>
           <p className="text-body">{data.followers}</p>
         </div>
-        <div className="flex w-full flex-col items-center rounded-lg bg-secondary p-2">
+        <div className="follows">
           <p>Following</p>
           <p className="text-body">{data.following}</p>
         </div>

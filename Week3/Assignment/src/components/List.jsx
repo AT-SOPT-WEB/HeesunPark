@@ -1,6 +1,8 @@
-const List = ({ children }) => {
+const List = ({ className = "", children }) => {
   return (
-    <li className="w-100 list-none rounded-xl border-1 border-primary px-2 py-1 text-center text-body text-secondary">
+    <li
+      className={`${className} list-none rounded-xl border-1 border-primary px-2 py-1 text-center text-body text-secondary`}
+    >
       {children}
     </li>
   );

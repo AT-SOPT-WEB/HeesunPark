@@ -9,6 +9,14 @@
 
 @layer components {
   .message {
-    @apply text-title-2 text-secondary font-bold;
+    @apply text-title-2 font-bold text-secondary;
+  }
+
+  .follows {
+    @apply flex w-full flex-col items-center rounded-lg bg-primary p-2 hover:bg-secondary;
+  }
+
+  .colorDuration {
+    @apply transition-colors duration-300 ease-in-out;
   }
 }

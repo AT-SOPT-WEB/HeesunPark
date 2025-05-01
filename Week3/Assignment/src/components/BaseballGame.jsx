@@ -27,7 +27,7 @@ const BaseballGame = () => {
       <p className="message">{message}</p>
       <ul className="flex flex-col gap-2">
         {guesses.map((item, idx) => (
-          <List key={idx}>
+          <List key={idx} className="w-100">
             {item.value} - {item.strike}S {item.ball}B
           </List>
         ))}
