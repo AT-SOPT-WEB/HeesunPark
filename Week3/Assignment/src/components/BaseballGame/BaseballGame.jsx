@@ -1,7 +1,7 @@
-import Input from "./Input";
-import List from "./List";
+import Input from "../../shared/Input";
+import List from "../../shared/List";
 import { useState } from "react";
-import { useBaseballGame } from "../hooks/useBaseballGame";
+import { useBaseballGame } from "../../hooks/useBaseballGame";
 
 const BaseballGame = () => {
   const [userInput, setUserInput] = useState("");

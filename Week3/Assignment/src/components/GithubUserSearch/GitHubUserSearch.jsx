@@ -1,11 +1,11 @@
-import Input from "./Input";
-import { useGitHubUser } from "../hooks/useGitHubUser";
+import Input from "../../shared/Input";
+import { useGitHubUser } from "../../hooks/useGitHubUser";
 import { useEffect, useState } from "react";
-import { GITHUB_KEY } from "../constant/storageKey";
-import { setItem } from "../utils/storageUtils";
+import { GITHUB_KEY } from "../../constant/storageKey";
+import { setItem } from "../../utils/storageUtils";
 import UserHistoryList from "./UserHistoryList";
-import { useUserHistory } from "../hooks/useUserHistory";
-import { renderUserInfo } from "../hooks/renderUserInfo";
+import { useUserHistory } from "../../hooks/useUserHistory";
+import { renderUserInfo } from "../../hooks/renderUserInfo";
 const GitHubUserSearch = () => {
   const [userInput, setUserInput] = useState("");
   const { userInfo, getUserInfo } = useGitHubUser();

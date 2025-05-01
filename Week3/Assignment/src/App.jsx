@@ -1,8 +1,8 @@
 import "./styles/index.css";
-import Header from "./components/Header";
+import Header from "./shared/Header";
 import { useState } from "react";
-import GitHubUserSearch from "./components/GitHubUserSearch";
-import BaseballGame from "./components/BaseballGame";
+import BaseballGame from "./components/baseballGame/BaseballGame";
+import GitHubUserSearch from "./components/GithubUserSearch/GitHubUserSearch";
 function App() {
   const [selected, setSelected] = useState("github");
 

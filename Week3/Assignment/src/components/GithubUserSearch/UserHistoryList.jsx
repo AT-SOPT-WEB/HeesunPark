@@ -1,4 +1,4 @@
-import List from "./List";
+import List from "../../shared/List";
 const UserHistoryList = ({ userList, onUserClick, onDeleteUser }) => {
   return (
     <ul className="flex gap-2">

@@ -1,4 +1,4 @@
-import Card from "../components/Card";
+import Card from "../components/GithubUserSearch/Card";
 import { ClipLoader } from "react-spinners";
 export const renderUserInfo = (userInfo, showCard, handleCloseCard) => {
   if (userInfo.status === "pending") {
