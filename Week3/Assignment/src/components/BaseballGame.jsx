@@ -2,7 +2,6 @@ import Input from "./Input";
 import List from "./List";
 import { useState } from "react";
 import { useBaseballGame } from "../hooks/useBaseballGame";
-import { BASEBALL_KEY } from "../constant/storageKey";
 
 const BaseballGame = () => {
   const [userInput, setUserInput] = useState("");
