@@ -12,12 +12,26 @@ const Card = ({ onClose, ...data }) => {
         </button>
       </div>
 
-      <img
-        src={data.avatar_url}
-        alt={`${data.name} 이미지`}
-        className="size-40 rounded-full border-4 border-primary"
-      />
-      <p>{data.name}</p>
+      <a
+        href={`https://github.com/${data.name}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cursor-pointer"
+      >
+        <img
+          src={data.avatar_url}
+          alt={`${data.name} 이미지`}
+          className="size-35 cursor-pointer rounded-full border-4 border-primary transition-all duration-200 ease-in-out hover:scale-105"
+        />
+      </a>
+      <a
+        href={`https://github.com/${data.name}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cursor-pointer hover:text-gray-300"
+      >
+        {data.name}
+      </a>
       <p className="text-body">{data.bio}</p>
       <div className="flex w-full gap-4">
         <div className="follows colorDuration">
