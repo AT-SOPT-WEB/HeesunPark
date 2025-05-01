@@ -1,32 +1,37 @@
 import Input from "./Input";
-import { useState } from "react";
 import List from "./List";
+import { useState } from "react";
+import { useBaseballGame } from "../hooks/useBaseballGame";
+import { BASEBALL_KEY } from "../constant/storageKey";
+
 const BaseballGame = () => {
-  const [value, setValue] = useState("");
+  const [userInput, setUserInput] = useState("");
+  const { message, guesses, onGuess } = useBaseballGame();
 
   const handleKeyDown = (e) => {
-    if ((e.key = "Enter")) {
-      console.log(e.target.value);
-      setValue("");
+    if (e.key === "Enter") {
+      onGuess(userInput);
+      setUserInput("");
     }
-  };
-
-  const handleNumberChange = (e) => {
-    setValue(e.target.value);
   };
 
   return (
     <div className="flex flex-col items-center gap-4">
       <Input
         type="text"
+        value={userInput}
         placeholder="3자리 숫자를 입력해주세요"
-        value={value}
-        onChange={handleNumberChange}
+        maxLength={3}
+        onChange={(e) => setUserInput(e.target.value)}
         onKeyDown={handleKeyDown}
       />
-      <p className="message">2 스트라이크 0 볼</p>
-      <ul>
-        <List />
+      <p className="message">{message}</p>
+      <ul className="flex flex-col gap-2">
+        {guesses.map((item, idx) => (
+          <List key={idx}>
+            {item.value} - {item.strike}S {item.ball}B
+          </List>
+        ))}
       </ul>
     </div>
   );
