@@ -1,5 +1,12 @@
 import Card from "../components/GithubUserSearch/Card";
-import { ClipLoader } from "react-spinners";
+
+/**
+ * getUserInfo로 반환되는 status 값에 따라 분기처리하는 함수
+ * @param {*} userInfo 검색창에 입력한 아이디
+ * @param {*} showCard 카드 렌더링 유무 state
+ * @param {*} handleCloseCard x버튼 눌렀을때 카드 사라지게 하는 함수
+ * @returns pending 상태면 스피너, rejected면 X, resolved면 Card 컴포넌트를 반환
+ */
 export const renderUserInfo = (userInfo, showCard, handleCloseCard) => {
   if (userInfo.status === "pending") {
     return (

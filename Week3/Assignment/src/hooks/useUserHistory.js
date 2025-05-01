@@ -3,6 +3,10 @@ import { GITHUB_KEY } from "../constant/storageKey";
 import { getItem, setItem } from "../utils/storageUtils";
 import { MAX_STORE } from "../constant/maxValue";
 
+/**
+ * 최근 검색어를 추가하고, 삭제하는 훅
+ * @returns userList(검색 히스토리), addUser, deleteUser, setUserList
+ */
 export const useUserHistory = () => {
   const [userList, setUserList] = useState(() => getItem(GITHUB_KEY) || []);
 

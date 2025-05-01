@@ -8,6 +8,13 @@ import {
 import { setItem, getItem } from "../utils/storageUtils";
 import { BASEBALL_KEY } from "../constant/storageKey";
 import { MAX_ATTEMPTS } from "../constant/maxValue";
+
+/**
+ * 화면 렌더링시 최초 정답 생성
+ * 답을 입력한 후 엔터를 칠때마다 값 업데이트
+ * 시도 횟수 검사 & 정답 시도별 상태 업데이트
+ * @returns message, onGuess, guesses
+ */
 export const useBaseballGame = () => {
   const [answer, setAnswer] = useState("");
   const [guesses, setGuesses] = useState([]);

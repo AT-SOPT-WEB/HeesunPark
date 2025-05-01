@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+/**
+ *
+ * @returns userInfo(사용자의 정보), getUserInfo(github api)
+ */
 export const useGitHubUser = () => {
   const [userInfo, setUserInfo] = useState({ status: "idle", data: null });
 
