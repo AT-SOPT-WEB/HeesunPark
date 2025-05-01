@@ -31,6 +31,7 @@ const GitHubUserSearch = () => {
 
   const handleCloseCard = () => {
     setShowCard(false);
+    setUserInput("");
   };
 
   const handleDeleteStore = (userToDelete) => {
@@ -51,7 +52,7 @@ const GitHubUserSearch = () => {
         placeholder="GitHub 프로필을 검색해보세요"
       />
       <ul className="flex gap-2">
-        {userList.map((user, i) => (
+        {[...userList].reverse().map((user, i) => (
           <List
             key={`${user}-${i}`}
             onClick={() => {
