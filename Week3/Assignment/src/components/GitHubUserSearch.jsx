@@ -3,15 +3,15 @@ import Card from "./Card";
 import { useGitHubUser } from "../hooks/useGitHubUser";
 import { useEffect, useState } from "react";
 import { GITHUB_KEY } from "../constant/storageKey";
-import { getItem, setItem } from "../utils/storageUtils";
+import { setItem } from "../utils/storageUtils";
 import List from "./List";
-import { MAX_STORE } from "../constant/maxValue";
-import { ClipLoader } from "react-spinners";
+import { useUserHistory } from "../hooks/useUserHistory";
+import { renderUserInfo } from "../hooks/renderUserInfo";
 const GitHubUserSearch = () => {
   const [userInput, setUserInput] = useState("");
   const { userInfo, getUserInfo } = useGitHubUser();
   const [showCard, setShowCard] = useState(false);
-  const [userList, setUserList] = useState(() => getItem(GITHUB_KEY) || []);
+  const { userList, addUser, deleteUser } = useUserHistory();
 
   useEffect(() => {
     setItem(GITHUB_KEY, userList);
@@ -20,11 +20,7 @@ const GitHubUserSearch = () => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && userInput) {
       getUserInfo(userInput);
-      setUserList((prev) => {
-        const isExist = prev.some((user) => user === userInput);
-        const newList = isExist ? prev : [userInput, ...prev];
-        return newList.slice(0, MAX_STORE);
-      });
+      addUser(userInput);
       setShowCard(true);
       setUserInput("");
     }
@@ -36,29 +32,12 @@ const GitHubUserSearch = () => {
   };
 
   const handleDeleteStore = (userToDelete) => {
-    const newList = userList.filter((user) => user !== userToDelete);
-    setUserList(newList);
+    deleteUser(userToDelete);
     setShowCard(false);
     setUserInput("");
-    setItem(GITHUB_KEY, newList);
   };
 
-  let content = null;
-  if (userInfo.status === "pending") {
-    content = (
-      <div className="mt-8 flex items-center justify-center">
-        <ClipLoader color="bg-blue-900" size={48} />
-      </div>
-    );
-  } else if (userInfo.status === "rejected") {
-    content = (
-      <div className="mt-4 text-center text-red-500">
-        결과를 찾을 수 없습니다.
-      </div>
-    );
-  } else if (userInfo.status === "resolved" && showCard) {
-    content = <Card {...userInfo.data} onClose={handleCloseCard} />;
-  }
+  const content = renderUserInfo(userInfo, showCard, handleCloseCard);
 
   return (
     <div className="flex flex-col gap-4">
