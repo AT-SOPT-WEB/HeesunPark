@@ -33,10 +33,14 @@ const GitHubUserSearch = () => {
     setShowCard(false);
   };
 
-  const handleDeleteStore = () => {
-    setUserList(userList.slice(0, userList.length - 1));
-    setItem(GITHUB_KEY, userList);
+  const handleDeleteStore = (userToDelete) => {
+    const newList = userList.filter((user) => user !== userToDelete);
+    setUserList(newList);
+    setShowCard(false);
+    setUserInput("");
+    setItem(GITHUB_KEY, newList);
   };
+
   return (
     <div className="flex flex-col gap-4">
       <Input
@@ -50,12 +54,21 @@ const GitHubUserSearch = () => {
         {userList.map((user, i) => (
           <List
             key={`${user}-${i}`}
+            onClick={() => {
+              getUserInfo(user);
+              setUserInput(user);
+              setShowCard(true);
+            }}
             className="flex cursor-pointer items-center gap-1 hover:text-blue-500"
           >
             {user}
             <button
               type="button"
-              onClick={handleDeleteStore}
+              onClick={(e) => {
+                // 부모 onClick 방지
+                e.stopPropagation();
+                handleDeleteStore(user);
+              }}
               className="flex cursor-pointer items-center"
             >
               <i className="fa-solid fa-xmark"></i>
