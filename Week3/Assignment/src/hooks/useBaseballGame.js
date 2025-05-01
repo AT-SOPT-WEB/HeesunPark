@@ -13,13 +13,22 @@ export const useBaseballGame = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    setAnswer(makeAnswer());
+    const savedData = getItem(BASEBALL_KEY);
+    if (savedData) {
+      setAnswer(savedData.answer);
+      setGuesses(savedData.guesses);
+    } else {
+      const newAnswer = makeAnswer();
+      setAnswer(newAnswer);
+      setItem(BASEBALL_KEY, { answer: newAnswer, guesses: [] });
+    }
   }, []);
 
   const resetGame = () => {
     setGuesses([]);
     setMessage("");
     setAnswer("");
+    clearStorage(BASEBALL_KEY);
   };
 
   const onGuess = (userInput) => {
@@ -38,8 +47,10 @@ export const useBaseballGame = () => {
       setMessage("정답입니다! 🎉🥳 3초 뒤에 게임을 재시작 합니다.");
       setTimeout(resetGame, 3000);
     } else {
+      const newGuesses = [...guesses, { value: userInput, strike, ball }];
       setMessage(`${strike}스트라이크 ${ball}볼`);
-      setGuesses((prev) => [...prev, { value: userInput, strike, ball }]);
+      setGuesses(newGuesses);
+      setItem(BASEBALL_KEY, { answer, guesses: newGuesses });
     }
   };
   return { message, guesses, onGuess };
