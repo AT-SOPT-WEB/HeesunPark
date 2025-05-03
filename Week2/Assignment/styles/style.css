@@ -1,0 +1,225 @@
+/* 기본 폰트 설정 */
+@font-face {
+  font-family: 'ChosunGu';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'ChosunGu';
+}
+
+/* body 기본 설정 */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rem;
+}
+
+/* 헤더 컨테이너 */
+.header__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  width: 70rem;
+  padding: 2rem;
+
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 헤더 제목 */
+.header__title {
+  font-size: var(--font-xlarge);
+}
+
+/* 버튼 컨테이너 */
+.header__btn--container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+/* 공통 버튼 스타일 */
+.btn,
+.custom-select__trigger {
+  padding: 0.8rem 1.2rem;
+  border-radius: 5px;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  font-size: var(--font-small);
+}
+
+.btn:hover {
+  background-color: var(--color-secondary);
+}
+
+/* 할 일 컨테이너 */
+.todo__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  padding: 2rem;
+
+  width: 70rem;
+
+  background-color: var(--color-gray);
+}
+
+/* 할 일 입력 폼 */
+.todo-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* 입력창 */
+.todo-form__input {
+  flex: 1;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+/* 선택박스 및 추가 버튼 */
+.todo-form__select,
+.todo-form__btn-add {
+  flex-shrink: 0;
+}
+
+/* 할 일 테이블 컨테이너 */
+.todo-table__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: end;
+}
+
+/* 할 일 테이블 */
+.todo-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0.2rem;
+}
+
+/* 테이블 헤드 */
+.todo-table__head {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.todo-table__head th {
+  padding: 1rem;
+  font-size: var(--font-small);
+}
+
+/* 테이블 바디 */
+.todo-table__body td {
+  padding: 1rem;
+  background-color: var(--color-white);
+  text-align: center;
+  font-size: var(--font-xsmall);
+}
+
+/* 커스텀 셀렉트 기본 스타일 */
+.custom-select {
+  position: relative;
+
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 옵션 박스 */
+.custom-select__options {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+
+  top: 100%;
+  left: 0;
+
+  width: 100%;
+
+  background: var(--color-white);
+
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 옵션 아이템 */
+.custom-select__option {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: var(--font-medium);
+}
+
+/* 호버 효과 */
+.custom-select__option:hover {
+  border-radius: 4px;
+  background: var(--color-gray);
+}
+
+/* 열림 상태 */
+.custom-select.open .custom-select__options {
+  display: block;
+}
+
+/* 모달 */
+.custom-modal::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.custom-modal {
+  display: none;
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+    padding: 2rem;
+    width: 30rem;
+    height: 20rem;
+
+    border: none;
+    border-radius: 8px;
+  }
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+
+  font-size: var(--font-large);
+}
+
+.modal-close {
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+/* 푸터 */
+footer {
+  position: absolute;
+  bottom: 0;
+  padding: 1rem;
+  width: 100%;
+  height: 4rem;
+  background-color: var(--color-gray);
+}
