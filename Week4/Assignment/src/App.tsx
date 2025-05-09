@@ -1,4 +1,6 @@
 import router from '@router/Router';
+import '@styles/global.css';
+
 import { RouterProvider } from 'react-router';
 
 const App = () => {
