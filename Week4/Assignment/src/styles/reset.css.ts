@@ -46,6 +46,7 @@ globalStyle('*, *::before, *::after', {
 globalStyle('html', {
   '@layer': {
     [layers.reset]: {
+      fontSize: '62.5%',
       MozTextSizeAdjust: 'none',
       WebkitTextSizeAdjust: 'none',
       textSizeAdjust: 'none',
