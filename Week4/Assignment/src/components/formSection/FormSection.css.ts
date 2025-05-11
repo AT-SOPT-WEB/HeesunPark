@@ -6,7 +6,7 @@ export const container = style({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  gap: '4rem',
+  gap: '3rem',
 });
 
 export const head = style({

@@ -11,4 +11,8 @@ export const ROUTES_CONFIG = {
     title: 'Signup',
     path: '/signup',
   },
+  membersearch: {
+    title: 'MemberSearch',
+    path: '/membersearch',
+  },
 };
