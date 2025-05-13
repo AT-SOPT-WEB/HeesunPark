@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import FormSection from '@components/formSection/FormSection';
 import IdInputStep from '@pages/signUp/components/idInputStep/IdInputStep';
 import PasswordInputStep from '@pages/signUp/components/passwordInputStep/PasswordInputStep';
@@ -14,6 +15,8 @@ const SignUp = () => {
     password: '',
     nickname: '',
   });
+
+  const navigate = useNavigate();
 
   const goToNextStep = () => {
     setStep((prev) => {

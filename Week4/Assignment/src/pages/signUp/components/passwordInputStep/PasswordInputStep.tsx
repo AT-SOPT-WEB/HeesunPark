@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router';
 import FormSection from '@components/formSection/FormSection';
 import Input from '@components/input/Input';
 import Button from '@components/button/Button';
@@ -39,14 +40,14 @@ const PasswordInputStep = ({
       <Input
         id='password'
         placeholder={PLACEHOLDERS.password}
-        type='text'
+        type='password'
         value={input}
         onChange={handleChange}
       />
       <Input
         id='checkpassword'
         placeholder={PLACEHOLDERS.checkPassword}
-        type='text'
+        type='password'
         value={checkPassword}
         onChange={handlePwdChange}
       />
@@ -55,6 +56,10 @@ const PasswordInputStep = ({
         다음
       </Button>
       {error && <p>{error}</p>}
+
+      <div>
+        <p>이미 회원이신가요?</p> <Link to='/login'>로그인</Link>
+      </div>
     </FormSection>
   );
 };

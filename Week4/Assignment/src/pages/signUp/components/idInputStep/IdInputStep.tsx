@@ -3,6 +3,7 @@ import FormSection from '@components/formSection/FormSection';
 import Input from '@components/input/Input';
 import Button from '@components/button/Button';
 import { PLACEHOLDERS } from '@pages/signUp/constants/placeholder';
+import { Link } from 'react-router';
 
 const IdInputStep = ({
   value,
@@ -33,6 +34,9 @@ const IdInputStep = ({
       >
         다음
       </Button>
+      <div>
+        <p>이미 회원이신가요?</p> <Link to='/login'>로그인</Link>
+      </div>
     </FormSection>
   );
 };
