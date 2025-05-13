@@ -6,7 +6,7 @@ export const postSignUp = async (data: SignUpRequestType) => {
   try {
     const response = await instance.post(API_URL.AUTH_SIGNUP, data);
 
-    return response.data.result.token;
+    return response.data;
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message);
@@ -17,8 +17,7 @@ export const postSignUp = async (data: SignUpRequestType) => {
 export const postLogIn = async (data: LoginRequestType) => {
   try {
     const response = await instance.post(API_URL.AUTH_LOGIN, data);
-
-    return response.data.result.token;
+    return response.data;
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message);

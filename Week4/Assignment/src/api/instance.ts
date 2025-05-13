@@ -9,3 +9,4 @@ export const instance = axios.create({
 });
 
 instance.interceptors.response.use((response) => response, onErrorResponse);
+export default instance;
