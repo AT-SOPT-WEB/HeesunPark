@@ -1,7 +1,7 @@
 import * as styles from '@components/formSection/FormSection.css';
 
 interface FormSectionProps {
-  title: string;
+  title?: string;
   children: React.ReactNode;
 }
 
