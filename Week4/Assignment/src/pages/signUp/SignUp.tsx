@@ -4,6 +4,9 @@ import FormSection from '@components/formSection/FormSection';
 import IdInputStep from '@pages/signUp/components/idInputStep/IdInputStep';
 import PasswordInputStep from '@pages/signUp/components/passwordInputStep/PasswordInputStep';
 import NicknameInputStep from '@pages/signUp/components/nicknameInputStep/NicknameInputStep';
+import { postSignUp } from '@api/auth';
+import { SUCCESS_MESSAGE } from '@constants/messages';
+import { ROUTES_CONFIG } from '@router/routesConfig';
 
 const SignUp = () => {
   const [step, setStep] = useState<
@@ -17,6 +20,25 @@ const SignUp = () => {
   });
 
   const navigate = useNavigate();
+
+  const handleSignUp = async (nickname: string) => {
+    try {
+      const data = await postSignUp({
+        loginId: formData.id,
+        password: formData.password,
+        nickname,
+      });
+
+      localStorage.setItem('userId', data.loginId);
+
+      alert(SUCCESS_MESSAGE.SIGNUP_SUCCESS);
+
+      navigate(ROUTES_CONFIG.login.path);
+    } catch (error) {
+      alert('회원가입에 실패했습니다. 다시 시도해주세요.');
+      console.error(error);
+    }
+  };
 
   const goToNextStep = () => {
     setStep((prev) => {
@@ -64,7 +86,7 @@ const SignUp = () => {
           value={formData.nickname}
           onNext={(nickname) => {
             updateFormData({ nickname });
-            goToNextStep();
+            handleSignUp(nickname);
           }}
         />
       )}
